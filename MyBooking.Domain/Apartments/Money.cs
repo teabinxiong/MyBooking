@@ -12,7 +12,7 @@ namespace MyBooking.Domain.Apartments
         {
             if(first.Currency != second.Currency)
             {
-                throw new InvalidOperationException("Currencies have to be equal")
+                throw new InvalidOperationException("Currencies have to be equal");
             }
 
             return new Money(first.Amount + second.Amount, first.Currency);
