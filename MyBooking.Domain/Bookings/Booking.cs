@@ -1,5 +1,6 @@
 ﻿using MyBooking.Domain.Abstractions;
 using MyBooking.Domain.Apartments;
+using MyBooking.Domain.Shared;
 using MyBooking.Domain.Users.Events;
 using System;
 using System.Collections.Generic;

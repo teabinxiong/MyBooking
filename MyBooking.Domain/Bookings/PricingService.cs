@@ -1,4 +1,5 @@
 ﻿using MyBooking.Domain.Apartments;
+using MyBooking.Domain.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace MyBooking.Domain.Bookings
 
         public PricingDetails CalculatePrice(Apartment apartment, DateRange period)
         {
-            var currency = apartment.Currency;
+            var currency = apartment.Price.Currency;
 
             var priceForPeriod = new Money(
                 apartment.Price.Amount * period.LengthInDays,

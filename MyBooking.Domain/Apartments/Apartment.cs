@@ -1,4 +1,5 @@
 ﻿using MyBooking.Domain.Abstractions;
+using MyBooking.Domain.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;

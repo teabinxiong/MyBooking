@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyBooking.Domain.Apartments
+namespace MyBooking.Domain.Shared
 {
     public record Currency
     {
@@ -15,7 +15,7 @@ namespace MyBooking.Domain.Apartments
         private Currency(string code) => Code = code;
         public string Code { get; set; }
 
-        public static Currency FromCode(String code)
+        public static Currency FromCode(string code)
         {
             return All.FirstOrDefault(c => c.Code == code) ??
                 throw new ApplicationException("The currency code is invalid");
