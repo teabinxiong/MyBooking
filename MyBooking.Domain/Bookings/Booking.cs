@@ -52,16 +52,17 @@ namespace MyBooking.Domain.Bookings
 
 
         public static Booking Reserve(
-            Guid apartmentId,
+            Apartment apartment,
             Guid userId,
             DateRange duration,
             DateTime utcNow,
-            PricingDetails pricingDetails
+            PricingService pricingService
             )
         {
+            var pricingDetails = pricingService.CalculatePrice(apartment, duration);
             var booking = new Booking(
                 Guid.NewGuid(),
-                apartmentId,
+                apartment.Id,
                 userId,
                 duration,
                 pricingDetails.PriceForPeriod,
@@ -73,6 +74,8 @@ namespace MyBooking.Domain.Bookings
                 );
 
             booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));
+
+            apartment.LastBookedOnUtc = utcNow;
 
             return booking;
         }
