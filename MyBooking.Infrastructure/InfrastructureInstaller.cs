@@ -3,8 +3,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyBooking.Application.Abstractions.Clock;
 using MyBooking.Application.Abstractions.Email;
+using MyBooking.Domain.Abstractions;
+using MyBooking.Domain.Apartments;
+using MyBooking.Domain.Bookings;
+using MyBooking.Domain.Users;
 using MyBooking.Infrastructure.Clock;
 using MyBooking.Infrastructure.Email;
+using MyBooking.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +35,12 @@ namespace MyBooking.Infrastructure
             {
                 options.UseNpgsql(conString).UseSnakeCaseNamingConvention();
             });
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IApartmentRepository, ApartmentRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
+
+            services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
             return services;
         }
