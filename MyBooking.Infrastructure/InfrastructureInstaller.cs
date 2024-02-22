@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyBooking.Application.Abstractions.Clock;
 using MyBooking.Application.Abstractions.Email;
@@ -22,6 +23,13 @@ namespace MyBooking.Infrastructure
             services.AddTransient<IDateTimeProvider, DateTimeProvider>();
             services.AddTransient<IEmailService, EmailService>();
 
+            var conString = configuration.GetConnectionString("Database") ??
+                throw new ArgumentNullException(nameof(configuration));
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseNpgsql(conString).UseSnakeCaseNamingConvention();
+            });
 
             return services;
         }
