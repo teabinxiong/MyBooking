@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using MyBooking.Application.Abstractions.Behaviors;
 using MyBooking.Domain.Bookings;
 using System;
@@ -10,16 +11,20 @@ using System.Threading.Tasks;
 
 namespace MyBooking.Application
 {
-    public static class Installer
+    public static class ApplicationInstaller
     {
         public static IServiceCollection InstallApplication(this IServiceCollection services)
         {
             services.AddMediatR(configuration =>
             {
-                configuration.RegisterServicesFromAssembly(typeof(Installer).Assembly);
+                configuration.RegisterServicesFromAssembly(typeof(ApplicationInstaller).Assembly);
 
                 configuration.AddOpenBehavior(typeof(LoggingBehavior<,>));
+
+                configuration.AddOpenBehavior(typeof(ValidationBehavior<,>));
             });
+
+            services.AddValidatorsFromAssembly(typeof(ApplicationInstaller).Assembly);
 
             services.AddTransient<PricingService>();
 
