@@ -3,7 +3,7 @@
     public sealed record ReserveBookingRequest(
         Guid ApartmentId,
         Guid UserId,
-        DateOnly StartDate,
-        DateOnly EndDate
+        String StartDate,
+        String EndDate
     );
 }

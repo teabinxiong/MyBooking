@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyBooking.API.Controllers.Bookings;
 using MyBooking.Application.Bookings.GetBooking;
 using MyBooking.Application.Bookings.ReserveBooking;
+using System.Globalization;
 
 namespace MyBooking.API.Controllers
 {
@@ -36,11 +37,15 @@ namespace MyBooking.API.Controllers
             CancellationToken ct
         )
         {
+            var startDateObj = DateOnly.ParseExact(request.StartDate, "M-d-yyyy", CultureInfo.InvariantCulture);
+            var endDateObj = DateOnly.ParseExact(request.EndDate, "M-d-yyyy", CultureInfo.InvariantCulture);
+
+
             var command = new ReserveBookingCommand(
                 request.ApartmentId,
                 request.UserId,
-                request.StartDate,
-                request.EndDate
+                startDateObj,
+                endDateObj
                 );
 
             var result = await _sender.Send(command ,ct);

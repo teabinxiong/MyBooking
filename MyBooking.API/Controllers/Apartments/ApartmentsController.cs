@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MyBooking.Application.Apartments.SearchApartments;
+using System.Globalization;
 
 namespace MyBooking.API.Controllers.Apartments
 {
@@ -17,12 +18,15 @@ namespace MyBooking.API.Controllers.Apartments
 
         [HttpGet]
         public async Task<IActionResult> SearchApartments(
-            DateOnly startDate,
-            DateOnly endDate,
+            string startDate,
+            string endDate,
             CancellationToken ct
         )
         {
-            var query = new SearchApartmentsQuery(startDate, endDate);
+            var startDateObj = DateOnly.ParseExact(startDate,"M-d-yyyy", CultureInfo.InvariantCulture);
+            var endDateObj = DateOnly.ParseExact(endDate, "M-d-yyyy", CultureInfo.InvariantCulture); 
+
+            var query = new SearchApartmentsQuery(startDateObj, endDateObj);
 
             var result = await _sender.Send(query, ct);
 
