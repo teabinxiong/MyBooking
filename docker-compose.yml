@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  mybooking.api:
+    image: ${DOCKER_REGISTRY-}mybookingapi
+    container_name: MyBooking.Api
+    build:
+      context: .
+      dockerfile: MyBooking.API/Dockerfile
+    depends_on:
+      - mybooking.db
+
+  mybooking.db:
+    image: postgres:latest
+    container_name: Bookify.Db
+    environment:
+      - POSTGRES_DB=mybooking
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+

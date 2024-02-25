@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBooking.Infrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBooking.API", "MyBooking.API\MyBooking.API.csproj", "{0C96F27D-602C-4A76-B765-58E7CDD1B11C}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{05901BD8-402E-46E9-9037-1037510B7C4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{0C96F27D-602C-4A76-B765-58E7CDD1B11C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C96F27D-602C-4A76-B765-58E7CDD1B11C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C96F27D-602C-4A76-B765-58E7CDD1B11C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05901BD8-402E-46E9-9037-1037510B7C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05901BD8-402E-46E9-9037-1037510B7C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05901BD8-402E-46E9-9037-1037510B7C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05901BD8-402E-46E9-9037-1037510B7C4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
