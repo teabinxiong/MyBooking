@@ -25,7 +25,7 @@ namespace MyBooking.Infrastructure.Configurations
                 priceBuilder.Property(money => money.Currency)
                 .HasConversion(currency => currency.Code, code => Currency.FromCode(code));
             });
-            e
+            
             builder.OwnsOne(booking => booking.CleaningFee, priceBuilder =>
             {
                 priceBuilder.Property(money => money.Currency)

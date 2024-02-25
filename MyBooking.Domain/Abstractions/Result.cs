@@ -58,7 +58,7 @@ namespace MyBooking.Domain.Abstractions
         }
 
         [NotNull]
-        public TValue value => IsSuccess ? _value! 
+        public TValue Value => IsSuccess ? _value! 
             : throw new InvalidOperationException("The value of a failure result cannot be accessed.");
 
         public static implicit operator Result<TValue>(TValue? value) => Create(value);
