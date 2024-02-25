@@ -1,3 +1,4 @@
+using MyBooking.API.Extensions;
 using MyBooking.Application;
 using MyBooking.Infrastructure;
 
@@ -17,6 +18,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();

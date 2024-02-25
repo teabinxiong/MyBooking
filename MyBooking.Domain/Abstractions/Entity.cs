@@ -10,6 +10,11 @@ namespace MyBooking.Domain.Abstractions
     {
         private readonly List<IDomainEvent> _domainEvents = new();
 
+        protected Entity()
+        {
+
+        }
+
         protected Entity(Guid id)
         {
             Id = id;

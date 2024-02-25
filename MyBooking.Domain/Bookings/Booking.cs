@@ -13,6 +13,11 @@ namespace MyBooking.Domain.Bookings
 {
     public sealed class Booking : Entity
     { 
+        private Booking()
+        {
+
+        }
+
         private Booking(Guid id, Guid apartmentId, Guid userId, DateRange duration, Money priceForPeriod, Money cleaningFee, Money amenitiesUpCharge, Money totalPrice, BookingStatus status, DateTime createdOnUtc) : base(id)
         {
             UserId = userId;

@@ -10,6 +10,11 @@ namespace MyBooking.Domain.Apartments
 {
     public sealed class Apartment : Entity
     {
+        private Apartment()
+        {
+
+        }
+
         public Apartment(
             Guid id,
             Name name,
