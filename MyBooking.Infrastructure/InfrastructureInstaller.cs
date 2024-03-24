@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,6 +10,7 @@ using MyBooking.Domain.Abstractions;
 using MyBooking.Domain.Apartments;
 using MyBooking.Domain.Bookings;
 using MyBooking.Domain.Users;
+using MyBooking.Infrastructure.Authentication;
 using MyBooking.Infrastructure.Clock;
 using MyBooking.Infrastructure.Data;
 using MyBooking.Infrastructure.Email;
@@ -49,6 +51,13 @@ namespace MyBooking.Infrastructure
             services.AddSingleton<ISqlConnectionFactory>(_ => new SqlConnectionFactory(conString));
 
             SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer();
+
+            services.Configure<AuthenticationOptions>(configuration.GetSection("Authentication"));
+
+            services.ConfigureOptions<JwtBearerOptionsSetup>();
 
             return services;
         }
