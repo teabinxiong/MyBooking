@@ -1,5 +1,9 @@
 version: '3.4'
 
+volumes:
+  mybooking.pgdata:
+    external: true
+
 services:
   mybooking.api:
     image: ${DOCKER_REGISTRY-}mybookingapi
@@ -22,6 +26,19 @@ services:
     ports:
       - 5432:5432
 
-volumes:
-  mybooking.pgdata:
-    external: true
+  mybooking.idp:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: MyBooking.Identity
+    command: start-dev --import-realm
+    environment:
+        - KEYCLOAK_ADMIN=admin
+        - KEYCLOAK_ADMIN_PASSWORD=admin
+        - KEYCLOAK_IMPORT=./mybooking-realm-export.json
+    volumes:
+      - ./.containers/identity:/opt/keycloak/data
+      - ./.files/:/opt/keycloak/data/import/
+    ports:
+      - 18080:8080
+
+
+

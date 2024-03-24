@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBooking.Domain", "MyBooki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBooking.Application", "MyBooking.Application\MyBooking.Application.csproj", "{C37C646E-C707-4D97-A2D8-181AEE985330}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBooking.Infrastructure", "MyBooking.Infrastructure\MyBooking.Infrastructure.csproj", "{7C072234-4DC4-49C9-A07F-FA1898F7E15A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBooking.Infrastructure", "MyBooking.Infrastructure\MyBooking.Infrastructure.csproj", "{7C072234-4DC4-49C9-A07F-FA1898F7E15A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBooking.API", "MyBooking.API\MyBooking.API.csproj", "{0C96F27D-602C-4A76-B765-58E7CDD1B11C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBooking.API", "MyBooking.API\MyBooking.API.csproj", "{0C96F27D-602C-4A76-B765-58E7CDD1B11C}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{05901BD8-402E-46E9-9037-1037510B7C4F}"
 EndProject
